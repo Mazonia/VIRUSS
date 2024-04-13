@@ -1,0 +1,3 @@
+@echo off
+msg * IS IT FAIR???
+shutdown -c "Error! I WILL TRAIL YOU, TRAIL YOUR GIRLFRIEND AND EVEN TRAIL YOUR MOTHER!" -s
