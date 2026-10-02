@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIRUSS | Cybersecurity Research & Batch Script Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #090d16;
+            --panel-bg: rgba(18, 26, 43, 0.75);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --accent-red: #ef4444;
+            --accent-gold: #f59e0b;
+            --accent-cyan: #06b6d4;
+            --accent-emerald: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(at 10% 10%, rgba(239, 68, 68, 0.12) 0px, transparent 50%),
+                radial-gradient(at 90% 90%, rgba(6, 182, 212, 0.12) 0px, transparent 50%);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+        }
+
+        .header {
+            max-width: 1100px;
+            margin: 0 auto 2.5rem auto;
+            text-align: center;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            padding: 0.35rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .notice-banner {
+            max-width: 1100px;
+            margin: 0 auto 2rem auto;
+            background: rgba(245, 158, 11, 0.15);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            color: #fef08a;
+            font-size: 0.9rem;
+        }
+
+        .grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.75rem;
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card-title { font-size: 1.25rem; font-weight: 700; color: #fff; }
+
+        .risk-pill {
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .risk-high { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+        .risk-medium { background: rgba(245, 158, 11, 0.2); color: #fef08a; }
+
+        .card-desc { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem; }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #6ee7b7;
+            margin-bottom: 1rem;
+        }
+
+        .mitigation-box {
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.2);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.85rem;
+            color: #93c5fd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <span class="badge">Educational Cybersecurity Research Lab</span>
+        <h1>VIRUSS Script Inspection Sandbox</h1>
+        <p style="color:var(--text-muted);">Analysis of legacy Windows Batch & VBScript mechanics with mitigation strategies.</p>
+    </div>
+
+    <div class="notice-banner">
+        ⚠️ <strong>Educational Notice</strong>: All scripts in this laboratory are provided strictly for security analysis, signature auditing, and operating system mechanism research.
+    </div>
+
+    <div class="grid">
+        <!-- 1. Shutdown Script -->
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <h2 class="card-title">Shutdown PC Batch Script</h2>
+                    <span class="risk-pill risk-medium">Medium Risk</span>
+                </div>
+                <p class="card-desc">Triggers an automatic system shutdown sequence after a 10-second timer using the native Windows shutdown utility.</p>
+                <div class="code-block">shutdown -s -t 10</div>
+            </div>
+            <div class="mitigation-box">
+                🛡️ <strong>Defensive Remedy</strong>: Run <code>shutdown -a</code> in command prompt to immediately abort pending shutdowns.
+            </div>
+        </div>
+
+        <!-- 2. CapsLock VBScript -->
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <h2 class="card-title">CapsLock Loop VBScript</h2>
+                    <span class="risk-pill risk-medium">Medium Risk</span>
+                </div>
+                <p class="card-desc">Injects virtual keystrokes via WScript.Shell SendKeys to repeatedly toggle the CapsLock indicator.</p>
+                <div class="code-block">Set wshShell = wscript.CreateObject("WScript.Shell")<br>wshShell.sendkeys "{CAPSLOCK}"</div>
+            </div>
+            <div class="mitigation-box">
+                🛡️ <strong>Defensive Remedy</strong>: Terminate the script engine process via <code>taskkill /f /im wscript.exe</code>.
+            </div>
+        </div>
+
+        <!-- 3. System File Deletion Simulation -->
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <h2 class="card-title">System32 Removal Target</h2>
+                    <span class="risk-pill risk-high">High Risk</span>
+                </div>
+                <p class="card-desc">Attempts recursive deletion of critical system binaries (System32).</p>
+                <div class="code-block">del /f /s /q c:\windows\system32</div>
+            </div>
+            <div class="mitigation-box">
+                🛡️ <strong>Defensive Remedy</strong>: Windows UAC, System File Protection (SFC), and TrustedInstaller permissions block unprivileged deletion.
+            </div>
+        </div>
+
+        <!-- 4. Window Spawning Fork Bomb -->
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <h2 class="card-title">CMD Fork Spawner</h2>
+                    <span class="risk-pill risk-medium">Medium Risk</span>
+                </div>
+                <p class="card-desc">Recursively spawns new command prompt instances, consuming CPU and memory resources.</p>
+                <div class="code-block">:top<br>start cmd<br>goto top</div>
+            </div>
+            <div class="mitigation-box">
+                🛡️ <strong>Defensive Remedy</strong>: Kill command prompt processes using <code>taskkill /f /im cmd.exe</code> or Process Explorer.
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
